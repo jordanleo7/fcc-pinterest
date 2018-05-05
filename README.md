@@ -1,3 +1,24 @@
+freeCodeCamp's Pinterest Clone project.
+https://www.freecodecamp.org/challenges/build-a-pinterest-clone
+
+Here are the specific user stories you should implement for this project:
+
+User Story: As an unauthenticated user, I can login with Twitter.
+
+User Story: As an authenticated user, I can link to images.
+
+User Story: As an authenticated user, I can delete images that I've linked to.
+
+User Story: As an authenticated user, I can see a Pinterest-style wall of all the images I've linked to.
+
+User Story: As an unauthenticated user, I can browse other users' walls of images.
+
+User Story: As an authenticated user, if I upload an image that is broken, it will be replaced by a placeholder image. (can use jQuery broken image detection)
+
+Hint: Masonry.js is a library that allows for Pinterest-style image grids.
+
+======
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

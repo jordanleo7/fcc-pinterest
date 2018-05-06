@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
   title: String,
-  source: String,
+  url: String,
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   savedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 })
 
-module.exports = mongoose.model('pintclone-post', postSchema);
+module.exports = mongoose.model('pinterclone-post', postSchema);

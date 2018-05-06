@@ -9,10 +9,10 @@ const { graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const { createServer } = require('http');
 const { graphql, execute, subscribe } = require('graphql');
 // Create GraphQL Schema
-//const typeDefs = require('./typeDefs');
-//const resolvers = require('./resolvers');
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolvers');
 const { makeExecutableSchema } = require('graphql-tools');
-//const schema = makeExecutableSchema({ typeDefs, resolvers });
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 const User = require('./models/User');
 const PORT = process.env.PORT || 4000;
 const app = express();

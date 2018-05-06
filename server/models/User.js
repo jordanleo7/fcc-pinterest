@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  twitterID: String,
+  twitterId: String,
+  username: String,
+  displayName: String,
+  photos: Array
 })
 
-module.exports = mongoose.model('pintclone-user', userSchema);
+module.exports = mongoose.model('pinterclone-user', userSchema);

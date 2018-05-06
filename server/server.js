@@ -9,11 +9,11 @@ const { graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const { createServer } = require('http');
 const { graphql, execute, subscribe } = require('graphql');
 // Create GraphQL Schema
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
+//const typeDefs = require('./typeDefs');
+//const resolvers = require('./resolvers');
 const { makeExecutableSchema } = require('graphql-tools');
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-const User = require('./User');
+//const schema = makeExecutableSchema({ typeDefs, resolvers });
+const User = require('./models/User');
 const PORT = process.env.PORT || 4000;
 const app = express();
 
@@ -34,11 +34,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Initialize Passport
-require('./passport');
+require('./authentication/passport');
 app.use(passport.initialize());
 app.use(passport.session());
-const authRoutes = require('./authRoutes');
-app.use('/', authRoutes);
+const authRouter = require('./authentication/authRouter');
+app.use('/', authRouter);
 
 // Mongoose MongoDB
 mongoose.connect(process.env.MONGO_URI);

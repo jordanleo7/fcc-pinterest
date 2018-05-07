@@ -7,7 +7,7 @@ class Nav extends Component {
   render() {
     return (
       <div>
-        <nav className="nav">
+        <nav className="nav--container">
           <Link to={"/"}><h1 className="nav--logo">Pinterclone</h1></Link>
           <SignedInUser/>
         </nav>

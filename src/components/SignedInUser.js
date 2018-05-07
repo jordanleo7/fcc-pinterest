@@ -9,14 +9,14 @@ class SignedInUser extends Component {
     if (this.props.loading) return null
     if (this.props.error) return <div>Error</div>
     if (this.props.data.signedInUser) return (
-      <div>
+      <div className="nav--signin">
         <a href={'/auth/logout'}>
           Sign out
         </a>
       </div>
     )
     return (
-      <div>
+      <div className="nav--signin">
         <a href={'/auth/twitter'}>
           Sign in
         </a>

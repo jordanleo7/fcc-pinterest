@@ -5,7 +5,7 @@ type User {
   twitterId: String
   username: String
   displayName: String
-  photos: Array
+  photos: [String]
 }
 
 type Post {
@@ -17,6 +17,7 @@ type Post {
 }
 
 type Query {
+  signedInUser: User
   user: User
   post: Post
   usersCreatedPosts: [Post]

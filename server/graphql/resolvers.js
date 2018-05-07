@@ -1,5 +1,5 @@
-const Post = require('./Post')
-const User = require('./User')
+const Post = require('../models/Post')
+const User = require('../models/User')
 
 const resolvers = {
   Post: {
@@ -11,6 +11,11 @@ const resolvers = {
     }
   },
   Query: {
+    signedInUser(obj, args, context) {
+      if (context.user) {
+        return User.findById(context.user._id)
+      } else return null
+    },
     user(obj, args) {
       return User.findById(args.id)
     },

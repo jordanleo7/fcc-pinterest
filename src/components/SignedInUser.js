@@ -5,8 +5,8 @@ import { signedInUser } from '../queries'
 class SignedInUser extends Component {
 
   SignedInUser() {
-    if (this.props.data.loading) return <div>Loading</div>
-    if (this.props.data.error) return <div>Error</div>
+    if (this.props.data.loading) return <div className="nav--signin">Loading</div>
+    if (this.props.data.error) return <div className="nav--signin">Error</div>
     if (this.props.data.signedInUser) return (
       <div className="nav--signin">
         <a href={'/auth/logout'}>

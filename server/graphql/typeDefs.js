@@ -18,10 +18,10 @@ type Post {
 
 type Query {
   signedInUser: User
-  user: User
-  post: Post
-  usersCreatedPosts: [Post]
-  usersSavedPosts: [Post]
+  user(id: String): User
+  post(id: String): Post
+  usersCreatedPosts(id: String): [Post]
+  usersSavedPosts(id: String): [Post]
   allPosts: [Post]
 }
 

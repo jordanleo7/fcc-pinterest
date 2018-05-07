@@ -1,0 +1,35 @@
+.masonry--grid {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+.masonry--grid-item {
+  width: 47%;
+  margin: 0 0 0 2%;
+  padding: 0 0 16px 0;
+}
+
+.masonry--grid-item img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  .masonry--grid-item {
+    width: 30.66%;
+  }
+}
+
+@media (min-width: 768px) {
+  .masonry--grid-item {
+    width: 22.50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry--grid-item {
+    width: 17.60%;
+  }
+}

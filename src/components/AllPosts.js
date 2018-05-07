@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { graphql } from 'react-apollo'
 import { allPosts } from '../queries'
+import Masonry from 'react-masonry-component'
 
-class AllPosts extends Component {
+class AllPosts extends React.Component {
 
   AllPosts() {
     console.log(this.props.data.allPosts)
@@ -10,18 +11,24 @@ class AllPosts extends Component {
     if (this.props.data.error) return <div>Error</div>
     if (this.props.data.allPosts) return (
       this.props.data.allPosts.map((post) => {
-        return (<div key={post.id}>
-          {post.title}
-        </div>)
+        return (
+          <div key={post.id} className="masonry--grid-item">
+            <img src={post.url} alt={post.title}/>
+            <div>
+              <p>From {post.createdBy.username}</p>
+              
+            </div>
+          </div>
+        )
       })
     )
   }
 
   render() {
     return (
-      <div>
+      <Masonry className="masonry--grid">
         {this.AllPosts()}
-      </div>
+      </Masonry>
     )
   }
 

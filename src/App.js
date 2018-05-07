@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
 import AllPosts from "./components/AllPosts";
+import Profile from "./components/Profile";
 
 const client = new ApolloClient({
   link: new HttpLink({ 
@@ -28,6 +29,7 @@ class App extends Component {
             <Nav/>
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
+            <Route path="/profile/:id" component={Profile}/>
             <Footer/>
           </div>
         </BrowserRouter>

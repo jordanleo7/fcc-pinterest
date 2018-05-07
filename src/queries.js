@@ -20,6 +20,47 @@ const allPosts = gql`
       url
       createdBy {
         id
+        username
+      }
+      savedBy {
+        id
+        username
+      }
+    }
+  }
+`
+
+const user = gql`
+  query user($id: String!) {
+    user (id: $id) {
+      username
+      displayName
+      photos
+    }
+  }
+`
+const usersCreatedPosts = gql`
+  query usersCreatedPosts($id: String!) {
+    usersCreatedPosts (id: $id) {
+      title
+      url
+      createdBy {
+        id
+      }
+      savedBy {
+        id
+      }
+    }
+  }
+`
+
+const usersSavedPosts = gql`
+  query usersSavedPosts($id: String!) {
+    usersSavedPosts(id: $id) {
+      title
+      url
+      createdBy {
+        id
       }
       savedBy {
         id
@@ -42,4 +83,4 @@ const createPost = gql`
   }
 `
 
-export { signedInUser, allPosts, createPost }
+export { signedInUser, allPosts, user, usersCreatedPosts, usersSavedPosts, createPost }

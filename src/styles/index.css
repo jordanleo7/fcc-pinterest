@@ -13,7 +13,9 @@ html {
   box-sizing: inherit;
 }
 
-body {  
+body {
+  background: black;
+  color: white;  
   position: relative;
   margin: 0;
   padding: 0;
@@ -34,6 +36,8 @@ Nav
   padding: 16px;
   background: black;
   color: white;
+  border-bottom: 1px solid #222;
+  border-radius: 0;
 }
 
 .nav--logo {
@@ -64,6 +68,8 @@ Footer
   color: white;
   background: black;
   width: 100%;
+  border-top: 1px solid #222;
+  border-radius: 0;
 }
 
 .footer--container a {
@@ -71,4 +77,18 @@ Footer
   float: right;
   margin-left: 16px;
   text-decoration: none;
+}
+
+/*
+AllPosts
+*/
+
+.home--container h3 {
+  font-weight: bold;
+  text-align: center;
+  padding: 16px;
+}
+
+.home--container {
+  color: white;  
 }

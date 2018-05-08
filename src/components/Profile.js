@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'react-apollo'
 import { user, usersCreatedPosts, usersSavedPosts } from '../queries'
 import Masonry from 'react-masonry-component'
+import NewPost from './NewPost'
 
 class Profile extends React.Component {
 
@@ -46,14 +47,12 @@ class Profile extends React.Component {
           <button onClick={this.displayNewPost} className="profile--button">New</button>
         </div>
         <div>
-
           { this.state.display === "createdposts" 
             ? <div>created posts</div>
             : this.state.display === "savedposts"
             ? <div>saved posts</div>
-            : <div>new post</div>
+            : <NewPost/>
           }
-
         </div>
       </div>
     )

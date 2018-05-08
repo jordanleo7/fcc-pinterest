@@ -14,8 +14,8 @@ html {
 }
 
 body {
-  background: black;
-  color: white;  
+  background: white;
+  color: black;  
   position: relative;
   margin: 0;
   padding: 0;
@@ -34,15 +34,12 @@ Nav
 
 .nav--container {
   padding: 16px;
-  background: black;
-  color: white;
-  border-bottom: 1px solid #222;
-  border-radius: 0;
+  background: #222;
 }
 
 .nav--logo {
   font-weight: bold;
-  color: orange;
+  color: white;
   float: left;
 }
 
@@ -53,6 +50,7 @@ Nav
 .nav--signin a {
   color: white;
   text-decoration: none;
+  margin-left: 16px;
 }
 
 /* 
@@ -66,10 +64,8 @@ Footer
   left: 0;
   padding: 8px 16px;
   color: white;
-  background: black;
+  background: #222;
   width: 100%;
-  border-top: 1px solid #222;
-  border-radius: 0;
 }
 
 .footer--container a {
@@ -90,7 +86,7 @@ AllPosts
 }
 
 .home--container {
-  color: white;  
+
 }
 
 /*
@@ -108,7 +104,7 @@ Profile
 
 .profile--username {
   font-weight: bold;
-  margin-right: 16px;
+  margin-top: 4px;
 }
 
 .profile--nav-posts {
@@ -118,10 +114,11 @@ Profile
 .profile--button {
   border: none;
   background: none;
-  color: white;
+  color: green;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .profile--button-active {
-  color: orange;
+  color: black;
 }

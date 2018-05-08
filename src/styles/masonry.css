@@ -10,10 +10,24 @@
   padding: 0 0 16px 0;
 }
 
-.masonry--grid-item img {
+.masonry--grid-item-photo {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.masonry--grid-item-from {
+  float: left;
+  margin-top: 4px;
+}
+
+.masonry--grid-item-star {
+  float: right;
+}
+
+.masonry--grid-item a {
+  color: green;
+  text-decoration: none;
 }
 
 @media (min-width: 576px) {

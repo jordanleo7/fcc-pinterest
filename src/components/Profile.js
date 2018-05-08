@@ -36,11 +36,11 @@ class Profile extends React.Component {
     if (this.props.data.user) return (
       <div className="profile--container">
         <div className="profile--userdata">
-          <span className="profile--username">{this.props.data.user.username}</span>
           <img 
             src={this.props.data.user.photo} 
             alt="profile"
           />
+          <div className="profile--username">{this.props.data.user.username}</div>
         </div>
         <div className="profile--nav-posts">
           <button onClick={this.displayCreatedPosts} className="profile--button">Created</button>

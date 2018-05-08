@@ -8,7 +8,7 @@ class Nav extends Component {
     return (
       <div>
         <nav className="nav--container">
-          <Link to={"/"}><h1 className="nav--logo">Pinterclone</h1></Link>
+          <Link to={"/"}><h1 className="nav--logo">PINTERCLONE</h1></Link>
           <SignedInUser/>
         </nav>
       </div>

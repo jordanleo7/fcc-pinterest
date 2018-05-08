@@ -92,3 +92,20 @@ AllPosts
 .home--container {
   color: white;  
 }
+
+/*
+Profile
+*/
+
+.profile--container {
+  padding-top: 16px;
+}
+
+.profile--userdata {
+  text-align: center;
+}
+
+.profile--username {
+  font-weight: bold;
+  margin-right: 16px;
+}

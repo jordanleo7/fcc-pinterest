@@ -9,8 +9,16 @@ class Profile extends React.Component {
     console.log(this.props.data)
     if (this.props.data.loading) return <div>Loading</div>
     if (this.props.data.error) return <div>Error</div>
-    if (this.props.data.allPosts) return (
-      <div>hi</div>
+    if (this.props.data.user) return (
+      <div className="profile--container">
+        <div className="profile--userdata">
+          <span className="profile--username">{this.props.data.user.username}</span>
+          <img 
+            src={this.props.data.user.photo} 
+            alt="profile picture"
+          />
+        </div>
+      </div>
     )
   }
 

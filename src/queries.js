@@ -33,6 +33,7 @@ const allPosts = gql`
 const user = gql`
   query user($id: String!) {
     user (id: $id) {
+      id
       username
       displayName
       photo
@@ -42,13 +43,20 @@ const user = gql`
 const usersCreatedPosts = gql`
   query usersCreatedPosts($id: String!) {
     usersCreatedPosts (id: $id) {
+      id
       title
       url
       createdBy {
         id
+        username
+        displayName
+        photo
       }
       savedBy {
         id
+        username
+        displayName
+        photo
       }
     }
   }
@@ -57,13 +65,20 @@ const usersCreatedPosts = gql`
 const usersSavedPosts = gql`
   query usersSavedPosts($id: String!) {
     usersSavedPosts(id: $id) {
+      id
       title
       url
       createdBy {
         id
+        username
+        displayName
+        photo
       }
       savedBy {
         id
+        username
+        displayName
+        photo
       }
     }
   }
@@ -78,6 +93,9 @@ const createPost = gql`
       url
       createdBy {
         id
+        username
+        displayName
+        photo
       }
     }
   }

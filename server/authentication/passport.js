@@ -27,7 +27,7 @@ passport.use(new TwitterStrategy({
           twitterId: profile.id,
           username: profile.username,
           displayName: profile.displayName,
-          photos: profile.photos
+          photo: profile.photos[0].value
         }).save().then((newUser) => {
           console.log('New user created: ', newUser)
           done(null, newUser)

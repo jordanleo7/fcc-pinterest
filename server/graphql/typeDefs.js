@@ -5,7 +5,7 @@ type User {
   twitterId: String
   username: String
   displayName: String
-  photos: [String]
+  photo: String
 }
 
 type Post {

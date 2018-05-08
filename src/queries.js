@@ -7,7 +7,7 @@ const signedInUser = gql`
       twitterId
       username
       displayName
-      photos
+      photo
     }
   }
 `
@@ -35,7 +35,7 @@ const user = gql`
     user (id: $id) {
       username
       displayName
-      photos
+      photo
     }
   }
 `

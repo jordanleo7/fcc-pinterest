@@ -23,4 +23,6 @@ class Profile extends React.Component {
   }
 }
 
-export default graphql(user)(Profile)
+export default graphql(user, {
+  options: (props) => ({ variables: { id: props.match.params.id }})
+})(Profile)

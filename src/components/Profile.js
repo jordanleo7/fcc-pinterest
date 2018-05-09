@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component'
 import NewPost from './NewPost'
 import CreatedPosts from './CreatedPosts'
 import SavedPosts from './SavedPosts'
+import placeholderProfilePicture from '../images/iconmonstr-user-1.svg'
 
 class Profile extends React.Component {
 
@@ -37,10 +38,7 @@ class Profile extends React.Component {
     if (this.props.data.user) return (
       <div className="profile--container">
         <div className="profile--userdata">
-          <img 
-            src={this.props.data.user.photo} 
-            alt="profile"
-          />
+          { this.props.data.user.photo ? <img src={this.props.data.user.photo} alt="Profile"/> : <img src={placeholderProfilePicture} alt="Placeholder"/>}
           <div className="profile--username">{this.props.data.user.username}</div>
         </div>
         <div className="profile--nav-posts">

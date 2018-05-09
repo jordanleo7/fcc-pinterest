@@ -106,6 +106,10 @@ Profile
   padding: 16px 0;
 }
 
+.profile--userdata img {
+  width: 50px;
+}
+
 .profile--username {
   font-weight: bold;
   margin-top: 4px;

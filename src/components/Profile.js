@@ -4,6 +4,7 @@ import { user, usersCreatedPosts, usersSavedPosts } from '../queries'
 import Masonry from 'react-masonry-component'
 import NewPost from './NewPost'
 import CreatedPosts from './CreatedPosts'
+import SavedPosts from './SavedPosts'
 
 class Profile extends React.Component {
 
@@ -51,7 +52,7 @@ class Profile extends React.Component {
           { this.state.display === "createdposts" 
             ? <CreatedPosts userData={this.props.data.user} />
             : this.state.display === "savedposts"
-            ? <div>saved posts</div>
+            ? <SavedPosts userData={this.props.data.user} />
             : <NewPost/>
           }
         </div>

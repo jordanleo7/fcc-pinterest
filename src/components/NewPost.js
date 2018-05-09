@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { graphql, compose, Mutation } from 'react-apollo'
-import { signedInUser, createPost } from '../queries'
+import { signedInUser, createPost, usersCreatedPosts } from '../queries'
+import placeholderPicture from '../images/iconmonstr-picture-1.svg'
 
 class NewPost extends React.Component {
 
@@ -11,6 +12,7 @@ class NewPost extends React.Component {
       url: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.showPlaceholder = this.showPlaceholder.bind(this)
   }
 
   handleInputChange(event) {
@@ -23,11 +25,16 @@ class NewPost extends React.Component {
     })
   }
 
+  showPlaceholder(event) {
+    event.target.src = placeholderPicture
+  }
+
   render () {
     return (
-      <div>
+      <div className="newpost--container">
         <Mutation 
           mutation={createPost}
+          refetchQueries={[{ query: usersCreatedPosts, variables: { id: this.props.data.signedInUser.id } }]}
         >
           {createPost => (
             <div>
@@ -45,8 +52,10 @@ class NewPost extends React.Component {
               }}
               >
                 <div>
-                  <label>
-                    Title:
+                  <label className="newpost--label">
+                    <span>
+                    Title
+                    </span>
                     <input
                       name="title"
                       type="text"
@@ -57,8 +66,10 @@ class NewPost extends React.Component {
                     />
                   </label>
 
-                  <label>
-                    Image URL:
+                  <label className="newpost--label">
+                    <span>
+                    Image URL
+                    </span>
                     <input
                       name="url"
                       type="text"
@@ -74,9 +85,10 @@ class NewPost extends React.Component {
             </div>
           )}
         </Mutation>
-        <div>
-          Image Preview:
-          <img src={this.state.url} alt="Please enter a URL" />
+        <div className="newpost--img">
+          <span>Image Preview</span>
+          <img src={this.state.url} alt="URL preview" onError={this.showPlaceholder}/>
+          <span>If your image loads, you're good to go.</span>
         </div>
       </div>
     )

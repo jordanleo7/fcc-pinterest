@@ -30,6 +30,24 @@ const allPosts = gql`
   }
 `
 
+const post = gql`
+  query post($id: String!) {
+    post (id: $id) {
+      id
+      title
+      url
+      createdBy {
+        id
+        username
+      }
+      savedBy {
+        id
+        username
+      }
+    }
+  }
+`
+
 const user = gql`
   query user($id: String!) {
     user (id: $id) {
@@ -114,8 +132,14 @@ const toggleSavePost = gql`
         displayName
         photo
       }
+      savedBy {
+        id
+        username
+        displayName
+        photo
+      }
     }
   }
 `
 
-export { signedInUser, allPosts, user, usersCreatedPosts, usersSavedPosts, createPost, toggleSavePost }
+export { signedInUser, allPosts, user, post, usersCreatedPosts, usersSavedPosts, createPost, toggleSavePost }

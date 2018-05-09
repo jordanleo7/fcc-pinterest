@@ -28,6 +28,10 @@ body {
   float: right;
 }
 
+input:focus {
+  outline: 0;
+}
+
 /*
 Nav
 */
@@ -121,4 +125,67 @@ Profile
 
 .profile--button-active {
   color: black;
+}
+
+/* 
+New Post
+*/
+
+.newpost--container {
+  padding: 16px 16px 24px 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.newpost--container input {
+  border: none;
+  border-bottom: 1px solid gray;
+  border-radius: none;
+  font-size: 1em;
+  padding: 4px 0;
+  width: 100%;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.newpost--container input:focus {
+  border-bottom: 1px solid green;
+}
+
+.newpost--label {
+  display: block;
+  padding-top: 4px;
+  font-weight: bold;
+}
+
+.newpost--label span {
+  display: block;
+}
+
+.newpost--container button {
+  border: none;
+  background: none;
+  color: green;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.newpost--img {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.newpost--img img {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.newpost--img span {
+  display: block;
+  margin: 0;
+  padding: 8px 0;
 }

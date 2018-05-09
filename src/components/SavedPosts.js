@@ -2,18 +2,18 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import gql from "graphql-tag"
 import { graphql, compose, Mutation } from 'react-apollo'
-import { usersCreatedPosts, toggleSavePost } from '../queries'
+import { signedInUser, usersSavedPosts, toggleSavePost } from '../queries'
 import Masonry from 'react-masonry-component'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
 
-class CreatedPosts extends React.Component {
+class SavedPosts extends React.Component {
 
-  CreatedPosts() {
-    if (this.props.usersCreatedPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
-    if (this.props.usersCreatedPosts.error || this.props.signedInUser.error) return <div>Error</div>
-    if (this.props.usersCreatedPosts.usersCreatedPosts && this.props.signedInUser.signedInUser) return (
-      this.props.usersCreatedPosts.usersCreatedPosts.map((post) => {
+  SavedPosts() {
+    if (this.props.usersSavedPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
+    if (this.props.usersSavedPosts.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.usersSavedPosts.usersSavedPosts && this.props.signedInUser.signedInUser) return (
+      this.props.usersSavedPosts.usersSavedPosts.map((post) => {
 
         // Check if user saved this post
         const didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
@@ -49,7 +49,7 @@ class CreatedPosts extends React.Component {
   render() {
     return (
       <Masonry className="masonry--grid">
-        {this.CreatedPosts()}
+        {this.SavedPosts()}
       </Masonry>
     )
   }
@@ -58,8 +58,8 @@ class CreatedPosts extends React.Component {
 
 export default compose(
   graphql(gql`
-    query usersCreatedPosts($id: String!) {
-      usersCreatedPosts(id: $id) {
+    query usersSavedPosts($id: String!) {
+      usersSavedPosts(id: $id) {
         id
         title
         url
@@ -77,7 +77,7 @@ export default compose(
         }
       }
     }
-  `, {name: "usersCreatedPosts", options: (props) => ({ variables: { id: props.userData.id }})}),
+  `, {name: "usersSavedPosts", options: (props) => ({ variables: { id: props.userData.id }})}),
   graphql(gql`
   {
     signedInUser {
@@ -89,4 +89,4 @@ export default compose(
     }
   }
   `, {name: "signedInUser"})
-)(CreatedPosts)
+)(SavedPosts)

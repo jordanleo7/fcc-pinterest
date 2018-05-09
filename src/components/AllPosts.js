@@ -24,10 +24,7 @@ class AllPosts extends React.Component {
             <img src={post.url} alt={post.title} className="masonry--grid-item-photo"/>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
-              <Mutation 
-                mutation={toggleSavePost}
-                refetchQueries={[{ query: allPosts }]}
-              >
+              <Mutation mutation={toggleSavePost}>
                 {(toggleSavePost) => (
                   <button onClick={() => {
                     toggleSavePost({

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import gql from "graphql-tag";
 import { graphql, compose, Mutation } from 'react-apollo'
-import { allPosts, signedInUser, toggleSavePost } from '../queries'
+import { toggleSavePost } from '../queries'
 import Masonry from 'react-masonry-component'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
@@ -18,14 +18,13 @@ class AllPosts extends React.Component {
 
         // Check if signed in user saved this post
         let didUserSavePost = -1;
-        { this.props.signedInUser.signedInUser 
-          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+        this.props.signedInUser.signedInUser 
+          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id) 
           : null
-        }
 
         return (
           <div key={post.id} className="masonry--grid-item">
-            <img src={post.url} alt={post.title} className="masonry--grid-item-photo"/>
+            <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} className="masonry--grid-item-photo"/></Link>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
               <Mutation mutation={toggleSavePost}>
@@ -68,6 +67,7 @@ export default compose(
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username

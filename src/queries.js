@@ -18,6 +18,7 @@ const allPosts = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -36,6 +37,7 @@ const post = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -65,6 +67,7 @@ const usersCreatedPosts = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -87,6 +90,7 @@ const usersSavedPosts = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -110,6 +114,7 @@ const createPost = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -127,6 +132,7 @@ const toggleSavePost = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username
@@ -150,6 +156,7 @@ const deletePost = gql`
       id
       title
       url
+      dateCreated
       createdBy {
         id
         username

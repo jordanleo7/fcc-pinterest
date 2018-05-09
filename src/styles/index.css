@@ -193,3 +193,39 @@ New Post
   margin: 0;
   padding: 8px 0;
 }
+
+/*
+postview
+*/
+
+.postview--container {
+  margin: 16px;
+  text-align: center;
+}
+
+.postview--image {
+  max-width: 100%;
+}
+
+.postview--title {
+  margin: 8px 0;
+}
+
+.postview--from a {
+  color: green;
+  text-decoration: none;
+}
+
+.postview--button {
+  background: none;
+  border: none;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.postview--count {
+  font-size: 1.6em;
+  position: absolute;
+  right: 35px;
+  left: 0px;
+}

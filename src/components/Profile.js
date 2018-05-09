@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { graphql, compose } from 'react-apollo'
-import { user, signedInUser, usersCreatedPosts, usersSavedPosts } from '../queries'
-import Masonry from 'react-masonry-component'
 import NewPost from './NewPost'
 import CreatedPosts from './CreatedPosts'
 import SavedPosts from './SavedPosts'

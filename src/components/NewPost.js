@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql, compose, Mutation } from 'react-apollo'
-import { signedInUser, createPost, usersCreatedPosts } from '../queries'
+import { signedInUser, createPost, usersCreatedPosts, allPosts } from '../queries'
 import placeholderPicture from '../images/iconmonstr-picture-1.svg'
 
 class NewPost extends React.Component {
@@ -34,7 +34,11 @@ class NewPost extends React.Component {
       <div className="newpost--container">
         <Mutation 
           mutation={createPost}
-          refetchQueries={[{ query: usersCreatedPosts, variables: { id: this.props.data.signedInUser.id } }]}
+          refetchQueries={
+            [{ query: usersCreatedPosts, variables: { id: this.props.data.signedInUser.id } },
+              { query: allPosts }
+            ]
+          }
         >
           {createPost => (
             <div>

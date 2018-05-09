@@ -9,8 +9,8 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
-import AllPosts from "./components/AllPosts";
 import Profile from "./components/Profile";
+import PostView from "./components/PostView";
 
 const client = new ApolloClient({
   link: new HttpLink({ 
@@ -30,6 +30,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
             <Route path="/profile/:id" component={Profile}/>
+            <Route path="/post/:id" component={PostView}/>
             <Footer/>
           </div>
         </BrowserRouter>

@@ -20,7 +20,7 @@ const resolvers = {
       return User.findById(args.id)
     },
     post(obj, args) {
-      return User.findById(args.id)
+      return Post.findById(args.id)
     },
     usersCreatedPosts(obj, args) {
       return Post.find({ createdBy: args.id })

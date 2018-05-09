@@ -17,10 +17,9 @@ class CreatedPosts extends React.Component {
 
         // Check if signed in user saved this post
         let didUserSavePost = -1;
-        { this.props.signedInUser.signedInUser 
+        this.props.signedInUser.signedInUser 
           ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
           : null
-        }
 
         return (
           <div key={post.id} className="masonry--grid-item">
@@ -88,6 +87,7 @@ export default compose(
         id
         title
         url
+        dateCreated
         createdBy {
           id
           username

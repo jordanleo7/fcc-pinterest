@@ -14,6 +14,7 @@ type Post {
   url: String
   createdBy: User
   savedBy: [User]
+  dateCreated: String
 }
 
 type Query {

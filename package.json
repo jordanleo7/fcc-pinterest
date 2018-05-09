@@ -2,8 +2,13 @@
   "name": "fcc-pinterest",
   "version": "0.1.0",
   "engines": {
-    "node": "8.11.1"
+    "node": "9.11.1"
   },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "main": "server/server.js",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.12",

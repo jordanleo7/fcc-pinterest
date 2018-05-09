@@ -101,4 +101,21 @@ const createPost = gql`
   }
 `
 
-export { signedInUser, allPosts, user, usersCreatedPosts, usersSavedPosts, createPost }
+const toggleSavePost = gql`
+  mutation toggleSavePost($id: String!) {
+    toggleSavePost(id: $id) 
+    {
+      id
+      title
+      url
+      createdBy {
+        id
+        username
+        displayName
+        photo
+      }
+    }
+  }
+`
+
+export { signedInUser, allPosts, user, usersCreatedPosts, usersSavedPosts, createPost, toggleSavePost }

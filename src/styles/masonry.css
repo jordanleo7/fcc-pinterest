@@ -21,8 +21,21 @@
   margin-top: 4px;
 }
 
-.masonry--grid-item-star {
+.masonry--grid-item-star-button {
+  border: none;
+  border-radius: none;
+  background: none;
   float: right;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.masonry--grid-item-star-button-count {
+  font-size: 1.25em;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
 
 .masonry--grid-item a {

@@ -45,16 +45,16 @@ const resolvers = {
     },
     toggleSavePost: (obj, args, context) => {
       if (context.user) {
-        return Post.findById(args.id, (post) => {
+        return Post.findById(args.id).then((post) => {
           // search post for user
-          const findUser = post.savedBy.findIndex(oid => oid === context.user._id)
+          const findUser = post.savedBy.findIndex(oid => String(oid) == context.user._id)
           // If user not found, add user to post's savedBy array
-          if (!findUser) {
+          if (findUser === -1) {
             post.savedBy.push(context.user._id)
             return post.save()
           }
           // if user found, remove user from post's savedBy array
-          post.savedby.pull(findUser)
+          post.savedBy.splice(findUser, 1)
           return post.save()
         })
       }

@@ -38,6 +38,14 @@
   display: inline-block;
 }
 
+.masonry--grid-item-delete-button {
+  border: none;
+  background: none;
+  color: red;
+  cursor: pointer;
+  font-size: .8em;
+}
+
 .masonry--grid-item a {
   color: green;
   text-decoration: none;

@@ -28,6 +28,7 @@ type Query {
 type Mutation {
   createPost(title: String!, url: String!): Post
   toggleSavePost(id: String!): Post
+  deletePost(id: String!): Post
 }
 
 `

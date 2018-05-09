@@ -58,6 +58,7 @@ const user = gql`
     }
   }
 `
+
 const usersCreatedPosts = gql`
   query usersCreatedPosts($id: String!) {
     usersCreatedPosts (id: $id) {
@@ -142,4 +143,27 @@ const toggleSavePost = gql`
   }
 `
 
-export { signedInUser, allPosts, user, post, usersCreatedPosts, usersSavedPosts, createPost, toggleSavePost }
+const deletePost = gql`
+  mutation deletePost($id: String!) {
+    deletePost(id: $id)
+    {
+      id
+      title
+      url
+      createdBy {
+        id
+        username
+        displayName
+        photo
+      }
+      savedBy {
+        id
+        username
+        displayName
+        photo
+      }
+    }
+  }
+`
+
+export { signedInUser, allPosts, user, post, usersCreatedPosts, usersSavedPosts, createPost, toggleSavePost, deletePost }

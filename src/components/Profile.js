@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { graphql } from 'react-apollo'
-import { user, usersCreatedPosts, usersSavedPosts } from '../queries'
+import { graphql, compose } from 'react-apollo'
+import { user, signedInUser, usersCreatedPosts, usersSavedPosts } from '../queries'
 import Masonry from 'react-masonry-component'
 import NewPost from './NewPost'
 import CreatedPosts from './CreatedPosts'
 import SavedPosts from './SavedPosts'
 import placeholderProfilePicture from '../images/iconmonstr-user-1.svg'
+import gql from "graphql-tag"
 
 class Profile extends React.Component {
 
@@ -32,25 +33,29 @@ class Profile extends React.Component {
   }
 
   Profile() {
-    console.log(this.props.data)
-    if (this.props.data.loading) return <div>Loading</div>
-    if (this.props.data.error) return <div>Error</div>
-    if (this.props.data.user) return (
+    console.log(this.props)
+    if (this.props.user.loading || this.props.signedInUser.loading) return <div>Loading</div>
+    if (this.props.user.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.user.user) return (
       <div className="profile--container">
         <div className="profile--userdata">
-          { this.props.data.user.photo ? <img src={this.props.data.user.photo} alt="Profile"/> : <img src={placeholderProfilePicture} alt="Placeholder"/>}
-          <div className="profile--username">{this.props.data.user.username}</div>
+          { this.props.user.user.photo ? <img src={this.props.user.user.photo} alt="Profile"/> : <img src={placeholderProfilePicture} alt="Placeholder"/>}
+          <div className="profile--username">{this.props.user.user.username}</div>
         </div>
         <div className="profile--nav-posts">
           <button onClick={this.displayCreatedPosts} className="profile--button">Created</button>
           <button onClick={this.displaySavedPosts} className="profile--button">Saved</button>
-          <button onClick={this.displayNewPost} className="profile--button">New</button>
+          { 
+            this.props.user.user.id === this.props.signedInUser.signedInUser.id
+            ? <button onClick={this.displayNewPost} className="profile--button">New</button> 
+            : null
+          }
         </div>
         <div>
           { this.state.display === "createdposts" 
-            ? <CreatedPosts userData={this.props.data.user} />
+            ? <CreatedPosts userData={this.props.user.user} />
             : this.state.display === "savedposts"
-            ? <SavedPosts userData={this.props.data.user} />
+            ? <SavedPosts userData={this.props.user.user} />
             : <NewPost/>
           }
         </div>
@@ -67,6 +72,26 @@ class Profile extends React.Component {
   }
 }
 
-export default graphql(user, {
-  options: (props) => ({ variables: { id: props.match.params.id }})
-})(Profile)
+export default compose(
+  graphql(gql`
+  query user($id: String!) {
+    user (id: $id) {
+      id
+      username
+      displayName
+      photo
+    }
+  }
+`, {name: "user", options: (props) => ({ variables: { id: props.match.params.id }})}),
+  graphql(gql`
+  {
+    signedInUser {
+      id
+      twitterId
+      username
+      displayName
+      photo
+    }
+  }
+  `, {name: "signedInUser"})
+)(Profile)

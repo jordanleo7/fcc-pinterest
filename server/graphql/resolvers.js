@@ -58,6 +58,11 @@ const resolvers = {
           return post.save()
         })
       }
+    },
+    deletePost: (obj, args, context) => {
+      if (context.user) {
+        return Post.findByIdAndRemove(args.id)
+      }
     }
   }
 

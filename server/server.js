@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 
 var corsOptions = {
-  origin: ['http://localhost:3000', /*'https:// .herokuapp.com'*/],
+  origin: ['http://localhost:3000', process.env.DOMAIN],
   credentials: true
 };
 app.use(cors(corsOptions));

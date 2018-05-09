@@ -12,11 +12,15 @@ class SavedPosts extends React.Component {
   SavedPosts() {
     if (this.props.usersSavedPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
     if (this.props.usersSavedPosts.error || this.props.signedInUser.error) return <div>Error</div>
-    if (this.props.usersSavedPosts.usersSavedPosts && this.props.signedInUser.signedInUser) return (
+    if (this.props.usersSavedPosts.usersSavedPosts) return (
       this.props.usersSavedPosts.usersSavedPosts.map((post) => {
 
-        // Check if user saved this post
-        const didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+        // Check if signed in user saved this post
+        let didUserSavePost = -1;
+        { this.props.signedInUser.signedInUser 
+          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+          : null
+        }
 
         return (
           <div key={post.id} className="masonry--grid-item">

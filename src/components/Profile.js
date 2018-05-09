@@ -45,8 +45,7 @@ class Profile extends React.Component {
         <div className="profile--nav-posts">
           <button onClick={this.displayCreatedPosts} className="profile--button">Created</button>
           <button onClick={this.displaySavedPosts} className="profile--button">Saved</button>
-          { 
-            this.props.user.user.id === this.props.signedInUser.signedInUser.id
+          { this.props.signedInUser.signedInUser && this.props.user.user.id === this.props.signedInUser.signedInUser.id
             ? <button onClick={this.displayNewPost} className="profile--button">New</button> 
             : null
           }

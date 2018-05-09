@@ -13,11 +13,15 @@ class AllPosts extends React.Component {
     console.log(this.props)
     if (this.props.allPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
     if (this.props.allPosts.error || this.props.signedInUser.error) return <div>Error</div>
-    if (this.props.allPosts.allPosts && this.props.signedInUser.signedInUser) return (
+    if (this.props.allPosts.allPosts) return (
       this.props.allPosts.allPosts.map((post) => {
 
-        // Check if user saved this post
-        const didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+        // Check if signed in user saved this post
+        let didUserSavePost = -1;
+        { this.props.signedInUser.signedInUser 
+          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+          : null
+        }
 
         return (
           <div key={post.id} className="masonry--grid-item">

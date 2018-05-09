@@ -12,11 +12,15 @@ class CreatedPosts extends React.Component {
   CreatedPosts() {
     if (this.props.usersCreatedPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
     if (this.props.usersCreatedPosts.error || this.props.signedInUser.error) return <div>Error</div>
-    if (this.props.usersCreatedPosts.usersCreatedPosts && this.props.signedInUser.signedInUser) return (
+    if (this.props.usersCreatedPosts.usersCreatedPosts) return (
       this.props.usersCreatedPosts.usersCreatedPosts.map((post) => {
 
-        // Check if user saved this post
-        const didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+        // Check if signed in user saved this post
+        let didUserSavePost = -1;
+        { this.props.signedInUser.signedInUser 
+          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+          : null
+        }
 
         return (
           <div key={post.id} className="masonry--grid-item">
@@ -24,8 +28,7 @@ class CreatedPosts extends React.Component {
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
 
-              { 
-                post.createdBy.id === this.props.signedInUser.signedInUser.id
+              { this.props.signedInUser.signedInUser && post.createdBy.id === this.props.signedInUser.signedInUser.id
                 ? (<Mutation 
                     mutation={deletePost}
                     refetchQueries={[{ query: usersCreatedPosts, variables: { id: this.props.signedInUser.signedInUser.id } }]}

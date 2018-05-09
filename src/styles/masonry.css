@@ -32,10 +32,10 @@
 }
 
 .masonry--grid-item-star-button-count {
+  position: absolute;
+  right: 23px;
+  bottom: 18px;
   font-size: 1.25em;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
 }
 
 .masonry--grid-item-delete-button {
@@ -43,7 +43,8 @@
   background: none;
   color: red;
   cursor: pointer;
-  font-size: .8em;
+  font-size: .9em;
+  position: absolute;
 }
 
 .masonry--grid-item a {

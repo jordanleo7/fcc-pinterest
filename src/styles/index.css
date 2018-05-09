@@ -229,3 +229,30 @@ postview
   right: 35px;
   left: 0px;
 }
+
+/*
+about
+*/
+
+.about--container {
+  padding: 16px;
+}
+
+.about--container h3 {
+  font-weight: bold;
+  font-size: 1.25em;
+  border-bottom: 1px solid lightgray;
+}
+
+.about--container ul {
+  padding-bottom: 16px;
+}
+
+.about--container li {
+  padding: 4px 0;
+}
+
+.about--container a {
+  color: green;
+  text-decoration: none;
+}

@@ -46,6 +46,11 @@ const resolvers = {
     toggleSavePost: (obj, args, context) => {
       if (context.user) {
         return Post.findById(args.id).then((post) => {
+          // Check if user is post creator
+          if (String(context.user._id) === String(post.createdBy)) {
+            console.log('You can not save your own post')
+            return null;
+          }
           // search post for user
           const findUser = post.savedBy.findIndex(oid => String(oid) == context.user._id)
           // If user not found, add user to post's savedBy array

@@ -5,8 +5,20 @@ import { graphql, compose, Mutation } from 'react-apollo'
 import { toggleSavePost } from '../queries'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
+import placeholderPicture from '../images/iconmonstr-picture-1.svg'
 
 class PostView extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+    this.showPlaceholder = this.showPlaceholder.bind(this)
+  }
+
+  showPlaceholder(event) {
+    event.target.src = placeholderPicture
+  }
 
   PostView() {
 
@@ -22,7 +34,7 @@ class PostView extends React.Component {
 
     return (
       <div className="postview--container">
-        <img src={post.url} alt={post.title} className="postview--image"/>
+        <img src={post.url} alt={post.title} onError={this.showPlaceholder} className="postview--image"/>
         <div>
           <div className="postview--title">{post.title}</div>
           <p className="postview--from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>

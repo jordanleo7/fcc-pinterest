@@ -6,8 +6,20 @@ import { toggleSavePost } from '../queries'
 import Masonry from 'react-masonry-component'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
+import placeholderPicture from '../images/iconmonstr-picture-1.svg'
 
 class AllPosts extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+    this.showPlaceholder = this.showPlaceholder.bind(this)
+  }
+
+  showPlaceholder(event) {
+    event.target.src = placeholderPicture
+  }
 
   AllPosts() {
     console.log(this.props)
@@ -24,7 +36,7 @@ class AllPosts extends React.Component {
 
         return (
           <div key={post.id} className="masonry--grid-item">
-            <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} className="masonry--grid-item-photo"/></Link>
+            <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/></Link>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
               <Mutation mutation={toggleSavePost}>

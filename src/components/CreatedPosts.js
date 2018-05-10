@@ -22,7 +22,13 @@ class CreatedPosts extends React.Component {
   }
 
   CreatedPosts() {
-    if (this.props.usersCreatedPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
+    if (this.props.usersCreatedPosts.loading || this.props.signedInUser.loading) return (
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      )
     if (this.props.usersCreatedPosts.error || this.props.signedInUser.error) return <div>Error</div>
     if (this.props.usersCreatedPosts.usersCreatedPosts) return (
       this.props.usersCreatedPosts.usersCreatedPosts.map((post) => {

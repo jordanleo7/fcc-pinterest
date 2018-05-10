@@ -23,7 +23,13 @@ class AllPosts extends React.Component {
 
   AllPosts() {
     console.log(this.props)
-    if (this.props.allPosts.loading || this.props.signedInUser.loading) return <div>Loading</div>
+    if (this.props.allPosts.loading || this.props.signedInUser.loading) return (
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      )
     if (this.props.allPosts.error || this.props.signedInUser.error) return <div>Error</div>
     if (this.props.allPosts.allPosts) return (
       this.props.allPosts.allPosts.map((post) => {

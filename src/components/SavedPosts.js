@@ -44,25 +44,28 @@ class SavedPosts extends React.Component {
             <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/></Link>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
-              <Mutation 
-                mutation={toggleSavePost}
-                refetchQueries={[{ query: usersSavedPosts, variables: { id: this.props.signedInUser.signedInUser.id } }]}
-              >
-                {(toggleSavePost) => (
-                  <button onClick={() => {
-                    toggleSavePost({
-                      variables: { id: post.id }
-                    })
-                  }}
-                    className="masonry--grid-item-star-button"
-                  >
-                  { didUserSavePost 
-                    ? <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
-                    : <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
-                  }
-                  </button>
-                )}
-              </Mutation>
+              { this.props.signedInUser.signedInUser 
+                ? (<Mutation 
+                    mutation={toggleSavePost}
+                    refetchQueries={[{ query: usersSavedPosts, variables: { id: this.props.signedInUser.signedInUser.id } }]}
+                    >
+                    {(toggleSavePost) => (
+                      <button onClick={() => {
+                        toggleSavePost({
+                          variables: { id: post.id }
+                        })
+                      }}
+                        className="masonry--grid-item-star-button"
+                      >
+                      { didUserSavePost 
+                        ? <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
+                        : <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
+                      }
+                      </button>
+                    )}
+                  </Mutation>)
+                : <div><span className="masonry--grid-item-star-button-count-signedout">{post.savedBy.length}</span><img src={grayStar} alt="gray star" className="masonry--grid-item-star"/></div>
+              }
             </div>
           </div>
         )

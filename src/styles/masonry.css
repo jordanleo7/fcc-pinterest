@@ -31,11 +31,26 @@
   cursor: pointer;
 }
 
+.masonry--grid-item-star {
+  border: none;
+  border-radius: none;
+  background: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
 .masonry--grid-item-star-button-count {
   position: absolute;
   right: 23px;
   bottom: 18px;
   font-size: 1.25em;
+}
+
+.masonry--grid-item-star-button-count-signedout {
+  position: absolute;
+  right: 23px;
+  bottom: 16px;
 }
 
 .masonry--grid-item-delete-button {

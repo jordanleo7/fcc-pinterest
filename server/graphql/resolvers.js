@@ -23,13 +23,13 @@ const resolvers = {
       return Post.findById(args.id)
     },
     usersCreatedPosts(obj, args) {
-      return Post.find({ createdBy: args.id })
+      return Post.find({ createdBy: args.id }, null, {sort: {dateCreated: -1}})
     },
     usersSavedPosts(obj, args) {
-      return Post.find({ savedBy: args.id })
+      return Post.find({ savedBy: args.id }, null, {sort: {dateCreated: -1}})
     },
     allPosts() {
-      return Post.find({})
+      return Post.find({}, null, {sort: {dateCreated: -1}})
     }
   },
   Mutation: {
@@ -52,7 +52,7 @@ const resolvers = {
             return null;
           }
           // search post for user
-          const findUser = post.savedBy.findIndex(oid => String(oid) == context.user._id)
+          const findUser = post.savedBy.findIndex(oid => String(oid) === context.user._id)
           // If user not found, add user to post's savedBy array
           if (findUser === -1) {
             post.savedBy.push(context.user._id)
@@ -66,7 +66,11 @@ const resolvers = {
     },
     deletePost: (obj, args, context) => {
       if (context.user) {
-        return Post.findByIdAndRemove(args.id)
+        Post.findById(args.id).then((post) => {
+          if (String(post.createdBy) === String(context.user._id)) {
+            return post.remove()
+          } else return null
+        })
       }
     }
   }

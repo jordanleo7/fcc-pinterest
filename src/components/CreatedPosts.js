@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import gql from "graphql-tag"
 import { graphql, compose, Mutation } from 'react-apollo'
-import { usersCreatedPosts, toggleSavePost, deletePost } from '../queries'
+import { usersCreatedPosts, toggleSavePost, deletePost, allPosts } from '../queries'
 import Masonry from 'react-masonry-component'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
@@ -51,7 +51,8 @@ class CreatedPosts extends React.Component {
               { this.props.signedInUser.signedInUser && post.createdBy.id === this.props.signedInUser.signedInUser.id
                 ? (<Mutation 
                     mutation={deletePost}
-                    refetchQueries={[{ query: usersCreatedPosts, variables: { id: this.props.signedInUser.signedInUser.id } }]}
+                    refetchQueries={[{ query: usersCreatedPosts, variables: { id: this.props.signedInUser.signedInUser.id } },
+                      { query: allPosts }]}
                     >
                     {(deletePost) => (
                       <button onClick={() => {

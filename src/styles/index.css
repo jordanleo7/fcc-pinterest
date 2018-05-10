@@ -139,6 +139,7 @@ New Post
   padding: 16px 16px 24px 16px;
   margin: 0;
   text-align: center;
+  clear: both;
 }
 
 .newpost--container input {
@@ -192,6 +193,27 @@ New Post
   display: block;
   margin: 0;
   padding: 8px 0;
+}
+
+@media (min-width: 768px) {
+
+  .newpost--form-container {
+    float: left;
+    width: 50%;
+  }
+
+  .newpost--form {
+    padding-right: 16px;
+  }
+  
+  .newpost--img {
+    width: 50%;
+    float: right;
+  }
+}
+
+.clearfix {
+  clear: both;
 }
 
 /*

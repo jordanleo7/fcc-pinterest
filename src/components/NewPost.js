@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Redirect } from "react-router-dom"
 import { graphql, compose, Mutation } from 'react-apollo'
 import { signedInUser, createPost, usersCreatedPosts, allPosts } from '../queries'
 import placeholderPicture from '../images/iconmonstr-picture-1.svg'
@@ -9,7 +10,8 @@ class NewPost extends React.Component {
     super(props)
     this.state = {
       title: "",
-      url: ""
+      url: "",
+      redirectToNewPage: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.showPlaceholder = this.showPlaceholder.bind(this)
@@ -30,6 +32,11 @@ class NewPost extends React.Component {
   }
 
   render () {
+
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="newpost--container">
         <Mutation 
@@ -41,18 +48,17 @@ class NewPost extends React.Component {
           }
         >
           {createPost => (
-            <div>
-              <form onSubmit={event => {
+            <div className="newpost--form-container">
+              <form className="newpost--form"
+                onSubmit={event => {
                 event.preventDefault();
                 createPost({ variables : {
                   title: this.state.title,
-                  url: this.state.url
+                  url: this.state.url,
                 }})
                 this.setState({
-                  title: "",
-                  url: ""
+                  redirectToNewPage: true
                 })
-                alert('Post created!')
               }}
               >
                 <div>
@@ -92,8 +98,9 @@ class NewPost extends React.Component {
         <div className="newpost--img">
           <span>Image Preview</span>
           <img src={this.state.url} alt="URL preview" onError={this.showPlaceholder}/>
-          <span>If your image loads, you're good to go.</span>
+          <span>If the image loads, you're good to go.</span>
         </div>
+        <div className="clearfix"/>
       </div>
     )
   }

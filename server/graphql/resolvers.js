@@ -52,7 +52,7 @@ const resolvers = {
             return null;
           }
           // search post for user
-          const findUser = post.savedBy.findIndex(oid => String(oid) === context.user._id)
+          const findUser = post.savedBy.findIndex(oid => String(oid) == context.user._id)
           // If user not found, add user to post's savedBy array
           if (findUser === -1) {
             post.savedBy.push(context.user._id)

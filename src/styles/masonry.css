@@ -44,7 +44,8 @@
   color: red;
   cursor: pointer;
   font-size: .9em;
-  position: absolute;
+  margin: 3px 0;
+  padding: 0;
 }
 
 .masonry--grid-item a {

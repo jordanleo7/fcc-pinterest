@@ -43,7 +43,10 @@ class CreatedPosts extends React.Component {
           <div key={post.id} className="masonry--grid-item">
           <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/></Link>
             <div>
-              <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
+              { this.props.signedInUser.signedInUser && post.createdBy.id !== this.props.signedInUser.signedInUser.id
+                ? <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
+                : null
+              }
 
               { this.props.signedInUser.signedInUser && post.createdBy.id === this.props.signedInUser.signedInUser.id
                 ? (<Mutation 

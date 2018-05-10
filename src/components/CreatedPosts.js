@@ -41,7 +41,7 @@ class CreatedPosts extends React.Component {
 
         return (
           <div key={post.id} className="masonry--grid-item">
-            <img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/>
+          <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/></Link>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
 

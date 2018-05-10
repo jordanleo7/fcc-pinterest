@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import gql from "graphql-tag";
 import { graphql, compose, Mutation } from 'react-apollo'
-import { toggleSavePost } from '../queries'
+import { toggleSavePost, usersSavedPosts } from '../queries'
 import Masonry from 'react-masonry-component'
 import grayStar from '../images/iconmonstr-star-1-gray.svg'
 import greenStar from '../images/iconmonstr-star-1-green.svg'
@@ -45,7 +45,10 @@ class AllPosts extends React.Component {
             <Link to={`/post/${post.id}`}><img src={post.url} alt={post.title} onError={this.showPlaceholder} className="masonry--grid-item-photo"/></Link>
             <div>
               <p className="masonry--grid-item-from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
-              <Mutation mutation={toggleSavePost}>
+              <Mutation 
+                mutation={toggleSavePost}
+                refetchQueries={[{ query: usersSavedPosts, variables: { id: this.props.signedInUser.signedInUser.id } }]}
+                >
                 {(toggleSavePost) => (
                   <button onClick={() => {
                     toggleSavePost({

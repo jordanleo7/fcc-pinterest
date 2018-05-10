@@ -69,22 +69,25 @@ class CreatedPosts extends React.Component {
                 : null
               }
 
-              <Mutation mutation={toggleSavePost}>
-                {(toggleSavePost) => (
-                  <button onClick={() => {
-                    toggleSavePost({
-                      variables: { id: post.id }
-                    })
-                  }}
-                    className="masonry--grid-item-star-button"
-                  >
-                  { didUserSavePost 
-                    ? <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
-                    : <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
-                  }
-                  </button>
-                )}
-              </Mutation>
+              { this.props.signedInUser.signedInUser 
+                ? (<Mutation mutation={toggleSavePost}>
+                  {(toggleSavePost) => (
+                    <button onClick={() => {
+                      toggleSavePost({
+                        variables: { id: post.id }
+                      })
+                    }}
+                      className="masonry--grid-item-star-button"
+                    >
+                    { didUserSavePost 
+                      ? <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
+                      : <div><span className="masonry--grid-item-star-button-count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
+                    }
+                    </button>
+                  )}
+                </Mutation>)
+                : <div><span className="masonry--grid-item-star-button-count-signedout">{post.savedBy.length}</span><img className="masonry--grid-item-star" src={grayStar} alt="gray star" /></div>
+              }
             </div>
           </div>
         )

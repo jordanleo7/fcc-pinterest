@@ -44,22 +44,27 @@ class PostView extends React.Component {
         <div>
           <div className="postview--title">{post.title}</div>
           <p className="postview--from">From <Link to={`/profile/${post.createdBy.id}`}>{post.createdBy.username}</Link></p>
-          <Mutation mutation={toggleSavePost}>
-            {(toggleSavePost) => (
-              <button onClick={() => {
-                toggleSavePost({
-                  variables: { id: post.id }
-                })
-              }}
-                className="postview--button"
-              >
-              { didUserSavePost 
-                ? <div><span className="postview--count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
-                : <div><span className="postview--count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
-              }
-              </button>
-            )}
-          </Mutation>
+
+          { this.props.signedInUser.signedInUser 
+            ? (<Mutation mutation={toggleSavePost}>
+              {(toggleSavePost) => (
+                <button onClick={() => {
+                  toggleSavePost({
+                    variables: { id: post.id }
+                  })
+                }}
+                  className="postview--button"
+                >
+                { didUserSavePost 
+                  ? <div><span className="postview--count">{post.savedBy.length}</span><img src={grayStar} alt="gray star" /></div>
+                  : <div><span className="postview--count">{post.savedBy.length}</span><img src={greenStar} alt="green star" /></div>
+                }
+                </button>
+              )}
+            </Mutation>)
+            : <div className="postview--count-container-signedout"><span className="postview--count">{post.savedBy.length}</span><img className="masonry--grid-item-star" src={grayStar} alt="gray star" /></div>
+          }
+
         </div>
       </div>
     )

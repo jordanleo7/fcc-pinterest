@@ -252,6 +252,12 @@ postview
   left: 0px;
 }
 
+.postview--count-container-signedout {
+  display: inline-block;
+  padding: 8px 0 16px 0;
+  font-size: .8em;
+}
+
 /*
 about
 */

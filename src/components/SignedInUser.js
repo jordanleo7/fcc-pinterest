@@ -7,7 +7,7 @@ class SignedInUser extends Component {
 
   SignedInUser() {
     if (this.props.data.loading) return <div className="nav--signin">Loading</div>
-    if (this.props.data.error) return <div className="nav--signin">Error</div>
+    if (this.props.data.error) return <div className="nav--signin">There was an error loading this content. Please try again.</div>
     if (this.props.data.signedInUser) return (
       <div className="nav--signin">
         <Link to={`/profile/${this.props.data.signedInUser.id}`}>Profile</Link>

@@ -29,7 +29,7 @@ class CreatedPosts extends React.Component {
         <div class="bounce3"></div>
       </div>
       )
-    if (this.props.usersCreatedPosts.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.usersCreatedPosts.error || this.props.signedInUser.error) return <div>There was an error loading this content. Please try again.</div>
     if (this.props.usersCreatedPosts.usersCreatedPosts) return (
       this.props.usersCreatedPosts.usersCreatedPosts.map((post) => {
 

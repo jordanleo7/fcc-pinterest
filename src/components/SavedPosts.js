@@ -29,7 +29,7 @@ class SavedPosts extends React.Component {
         <div class="bounce3"></div>
       </div>
       )
-    if (this.props.usersSavedPosts.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.usersSavedPosts.error || this.props.signedInUser.error) return <div>There was an error loading this content. Please try again.</div>
     if (this.props.usersSavedPosts.usersSavedPosts) return (
       this.props.usersSavedPosts.usersSavedPosts.map((post) => {
 

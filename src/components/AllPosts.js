@@ -30,7 +30,7 @@ class AllPosts extends React.Component {
         <div class="bounce3"></div>
       </div>
       )
-    if (this.props.allPosts.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.allPosts.error || this.props.signedInUser.error) return <div>There was an error loading this content. Please try again.</div>
     if (this.props.allPosts.allPosts) return (
       this.props.allPosts.allPosts.map((post) => {
 

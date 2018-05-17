@@ -39,7 +39,7 @@ class Profile extends React.Component {
         <div class="bounce3"></div>
       </div>
       )
-    if (this.props.user.error || this.props.signedInUser.error) return <div>Error</div>
+    if (this.props.user.error || this.props.signedInUser.error) return <div>There was an error loading this content. Please try again.</div>
     if (this.props.user.user) return (
       <div className="profile--container">
         <div className="profile--userdata">

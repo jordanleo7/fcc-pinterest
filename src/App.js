@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import PostView from "./components/PostView";
+import { DIRECTIVE } from 'graphql/language/kinds';
 
 const client = new ApolloClient({
   link: new HttpLink({ 
@@ -27,10 +28,12 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Nav/>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/about" component={About}/>
-            <Route path="/profile/:id" component={Profile}/>
-            <Route path="/post/:id" component={PostView}/>
+            <div className="site--container">
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/about" component={About}/>
+              <Route path="/profile/:id" component={Profile}/>
+              <Route path="/post/:id" component={PostView}/>
+            </div>
             <Footer/>
           </div>
         </BrowserRouter>

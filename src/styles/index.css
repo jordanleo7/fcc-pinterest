@@ -32,6 +32,19 @@ input:focus {
   outline: 0;
 }
 
+.site--container {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+/* for nav and footer */
+.item--container {
+  max-width: 1080px;
+  text-align: right;  
+  margin: 0 auto;
+  padding: 0px 16px;
+}
+
 /*
 Nav
 */
@@ -70,11 +83,11 @@ Footer
   color: white;
   background: #222;
   width: 100%;
+
 }
 
 .footer--container a {
   color: white;
-  float: right;
   margin-left: 16px;
   text-decoration: none;
 }

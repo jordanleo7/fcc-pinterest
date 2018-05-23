@@ -11,7 +11,6 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import PostView from "./components/PostView";
-import { DIRECTIVE } from 'graphql/language/kinds';
 
 const client = new ApolloClient({
   link: new HttpLink({ 

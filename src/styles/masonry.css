@@ -21,6 +21,73 @@
   margin-top: 4px;
 }
 
+.masonry--grid-item a {
+  color: green;
+  text-decoration: none;
+}
+
+.masonry--grid-item-star {
+  border: none;
+  background: none;
+  float: right;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.masonry--grid-item-star-button {
+  margin: 2px 0 0 0;
+  padding: 0;
+  float: right;
+  border: none;
+  background: none;
+  font-size: 1em;
+}
+
+.masonry--grid-item-star-button span {
+  margin: 0;
+  padding: 0;
+  font-size: 1m;
+  position: relative;
+  vertical-align: top;
+}
+
+.masonry--grid-item-star-button img {
+  position: relative;
+  top: -4px;
+  padding: 0;
+  margin: 0;
+}
+
+.masonry--grid-item-delete-button {
+  color: red;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: .9em;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .masonry--grid-item {
+    width: 30.66%;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry--grid-item {
+    width: 22.50%;
+  }
+}
+
+
+
+
+/*
+
+
 .masonry--grid-item-star-button {
   border: none;
   border-radius: none;
@@ -62,26 +129,4 @@
   margin: 3px 0;
   padding: 0;
 }
-
-.masonry--grid-item a {
-  color: green;
-  text-decoration: none;
-}
-
-@media (min-width: 576px) {
-  .masonry--grid-item {
-    width: 30.66%;
-  }
-}
-
-@media (min-width: 768px) {
-  .masonry--grid-item {
-    width: 22.50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .masonry--grid-item {
-    width: 17.60%;
-  }
-}
+*/

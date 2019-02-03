@@ -35,9 +35,9 @@ class SavedPosts extends React.Component {
 
         // Check if signed in user saved this post
         let didUserSavePost = -1;
-        this.props.signedInUser.signedInUser 
-          ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
-          : null
+        if (this.props.signedInUser.signedInUser) {
+          didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+        }
 
         return (
           <div key={post.id} className="masonry--grid-item">

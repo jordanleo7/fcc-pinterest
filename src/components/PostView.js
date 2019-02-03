@@ -29,14 +29,15 @@ class PostView extends React.Component {
         <div class="bounce3"></div>
       </div>
       )
+
     if (this.props.post.error || this.props.signedInUser.error) return <div>There was an error loading this content. Please try again.</div>
 
     let post = this.props.post.post
     // Check if signed in user saved this post
     let didUserSavePost = -1;
-    this.props.signedInUser.signedInUser 
-      ? didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
-      : null
+    if (this.props.signedInUser.signedInUser) {
+      didUserSavePost = post.savedBy.findIndex(oid => String(oid.id) === this.props.signedInUser.signedInUser.id)
+    }
 
     return (
       <div className="postview--container">
